@@ -1,6 +1,7 @@
 package com.shope.common.entity;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -150,5 +151,16 @@ public class User {
 	@Transient
 	public String getFullName() {
 		return firstName + " " + lastNamme;
+	}
+	
+	public boolean hasRole(String roleName) {
+		Iterator<Role> iterator = roles.iterator();
+		while(iterator.hasNext()) {
+			Role role = iterator.next();
+			if(role.getName().equals(roleName)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

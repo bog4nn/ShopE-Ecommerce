@@ -12,8 +12,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.shope.common.entity.Role;
 import com.shope.common.entity.User;
 
+
 public class ShopEUserDetails implements UserDetails {
 
+	private static final long serialVersionUID = 1L;
 	private User user;
 	
 	public ShopEUserDetails(User user) {
@@ -71,5 +73,9 @@ public class ShopEUserDetails implements UserDetails {
 
 	public String getFullname() {
 		return this.user.getFirstName() + " " + this.user.getLastNamme();
+	}
+	
+	public boolean hasRole(String roleName) {
+		return user.hasRole(roleName);
 	}
 }

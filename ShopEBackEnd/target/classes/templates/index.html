@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="fragments :: page_head('Home - Shop Admin
+
+
+')"/>
+
+<body>
+	<div class="container-fluid">
+		<div>
+			<div th:replace="navigation :: menu"></div>
+		</div>
+
+		<div>
+			<h1>ShopE Control Panel</h1>
+		</div>
+
+		<div>
+			<p>ShopE Control Panel - Copyright &copy; ShopE</p>
+		</div>
+	</div>
+	
+	<script>
+		$(document).ready(function(){
+			$("#logoutLink").on("click", function(e){
+				e.preventDefault();
+				document.logoutForm.submit();
+			});
+		})
+	</script>
+</body>
+
+</html>

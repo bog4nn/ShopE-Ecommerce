@@ -15,7 +15,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.shope.admin.user.AbstractExporter;
+import com.shope.admin.AbstractExporter;
 import com.shope.common.entity.User;
 
 public class UserExcelExporter extends AbstractExporter{
@@ -62,7 +62,7 @@ public class UserExcelExporter extends AbstractExporter{
 	}
 	
 	public void export(List<User> listUsers, HttpServletResponse response) throws IOException {
-		super.setResponseHeader(response, "application/occtet-stream", ".xlsx");
+		super.setResponseHeader(response, "application/occtet-stream", ".xlsx","user_");
 		writeHeaderLine();
 		writeDataLines(listUsers);
 		
@@ -84,12 +84,12 @@ public class UserExcelExporter extends AbstractExporter{
 		 	XSSFRow row = sheet.createRow(rowIndex++);
 			int columnIndex = 0;
 			
-			createCell(row,columnIndex,user.getId(),cellStyle);
-			createCell(row,columnIndex,user.getEmail(),cellStyle);
-			createCell(row,columnIndex,user.getFirstName(),cellStyle);
-			createCell(row,columnIndex,user.getLastNamme(),cellStyle);
-			createCell(row,columnIndex,user.getRoles().toString(),cellStyle);
-			createCell(row,columnIndex,user.isEnabled(),cellStyle);
+			createCell(row,columnIndex++,user.getId(),cellStyle);
+			createCell(row,columnIndex++,user.getEmail(),cellStyle);
+			createCell(row,columnIndex++,user.getFirstName(),cellStyle);
+			createCell(row,columnIndex++,user.getLastNamme(),cellStyle);
+			createCell(row,columnIndex++,user.getRoles().toString(),cellStyle);
+			createCell(row,columnIndex++,user.isEnabled(),cellStyle);
 		}
 	}
 }
